@@ -1,0 +1,24 @@
+name: Java checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile and run examples
+        run: |
+          javac -encoding UTF-8 -d out/toros src/toros/*.java
+          java -cp out/toros toros.Main
+          javac -encoding UTF-8 -d out/kalitim src/Main.java src/ezme.java
+          java -cp out/kalitim Main
+          java -cp out/kalitim ezme
+          javac -encoding UTF-8 -d out/kupa kupa/*.java
+          java -cp out/kupa Main
+          javac -encoding UTF-8 -d out/kapsul kapsul/src/*.java
+          java -cp out/kapsul Main
