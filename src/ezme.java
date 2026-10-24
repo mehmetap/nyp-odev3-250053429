@@ -62,9 +62,6 @@ class OgrenciAboneligi extends Abonelik {
                 + " | Yıllık: " + yillikUcret() + " TL");
     }
 
-    public double yillikucret() {
-        return 0;
-    }
 
     @Override
     public String toString() {
