@@ -1,22 +1,32 @@
-# nyp-odev3-250053429# 
-Nesne Yönelimli Programlama
- Ad Soyad: Mehmetcan Sütsatan
-  Öğrenci Numarası: 250053429
-  K Değeri: 29
-  Repo Adı: nyp-odev3-250053429
- Proje Hakkında
-Bu çalışma; Java programlama dilinde referanslar, kapsülleme, kalıtım, `super`, `protected`, metot ezme (`@Override`), `toString`, `final` anahtar kelimesi ve DRY (Don't Repeat Yourself) prensiplerini uygulamak amacıyla geliştirilmiştir.
-Loncalara üye olabilen ve farklı özelliklere sahip silâhlar kuşanabilen karakterlerin yer aldığı bir simülasyon içerir.
- Sınıf Yapısı (`src/toros/`)
-Lonca.java: Lonca bilgilerini ve duyuruları yönetir.
- Silah.java:Silahların hasar, dayanıklılık ve tamir süreçlerini yönetir.
- Karakter.java: Tüm karakterlerin ortak özelliklerini (ad, can, seviye, lonca, silah) barındıran temel üst sınıf.
- Savasci.java: Zırh etkisini uygulayan alt sınıf.
- Buyucu.java: Mana ve büyü işlemlerini yöneten alt sınıf.
-Okcu.java: Ok sayısı ve atış mekanizmalarını yöneten alt sınıf.
- Suikastci.java: Gizlenme ve gizli saldırı yeteneklerini uygulayan alt sınıf.
- Main.java: Senaryo akışını ve geçersiz işlem kontrollerini test eder.
- Gereksinimler ve Çalıştırma
-javac -encoding UTF-8 -d out src/toros/*.java
-java -cp out toros.Main
+# NYP 3. Ödev
 
+Mehmetcan Sütsatan · 250053429 · K = 29
+
+Java referansları, kapsülleme, kalıtım ve metot ezme örnekleri. JDK 17 veya üstü gerekir.
+Örnekler ayrı derlenir; aynı adlı Main sınıfları tek derleme çıktısına konulmamalıdır.
+
+| Klasör | İçerik | Çalıştırma sınıfı |
+| --- | --- | --- |
+| kupa | Referanslar, Stack/Heap örneği | Main |
+| kapsul/src | Termostat kapsülleme | Main |
+| src | Kalıtım ve abonelik örnekleri | Main, ezme |
+| toros/src | Lonca, silah ve karakterler | toros.Main |
+
+```sh
+javac -encoding UTF-8 -d out/kupa kupa/*.java
+java -cp out/kupa Main
+javac -encoding UTF-8 -d out/kapsul kapsul/src/*.java
+java -cp out/kapsul Main
+javac -encoding UTF-8 -d out/kalitim src/*.java
+java -cp out/kalitim Main
+javac -encoding UTF-8 -d out/toros toros/src/*.java
+java -cp out/toros toros.Main
+```
+
+Kupa örneğinin çıktısı: Kırmızı, Yeşil, Yeşil 29, masadakiKupa: null.
+Null referans üzerinden metot çağrılmaz.
+
+## Kontrol durumu
+
+Kupa derleme hataları ve null erişimi düzeltildi. Termostat başlangıç örneği JDK 17 ile uyumlu hale getirildi.
+Bu incelemenin yerel ortamında javac bulunmadığından Java derlemesi doğrulanmadı; CI derleme ve örnek çalıştırma işlerini içerir.
